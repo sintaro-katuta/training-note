@@ -1,0 +1,13 @@
+version: "3"
+services:
+  front:
+    build:
+      context: .
+      dockerfile: ./front/Dockerfile
+    container_name: training-note-front
+    volumes:
+      - ./front:/usr/src/app
+    tty: true # コンテナを起動したままにする
+    command: sh -c "cd training-note && npm run dev"
+    ports:
+      - 3004:3004
