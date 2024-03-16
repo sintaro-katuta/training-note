@@ -8,7 +8,7 @@
 ※更に必要な場合追加予定
 
 ## 企画書
-[HackMDにまとめています][https://hackmd.io/HHVTafpvSzOcm7NNvPELTQ]
+[HackMDにまとめています](https://hackmd.io/HHVTafpvSzOcm7NNvPELTQ)
 
 ## 環境(以下は予定しているものです)
 ### Front
@@ -25,4 +25,4 @@
 
 ## 開発者
 勝田 紳太郎
-[Qiita][https://qiita.com/sintaro-katuta]
+[Qiita](https://qiita.com/sintaro-katuta)
