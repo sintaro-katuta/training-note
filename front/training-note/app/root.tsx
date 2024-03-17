@@ -6,37 +6,46 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
-import styles from "./tailwind.css";
 
+import "./tailwind.css";
 import Header from "./components/header/header";
 import Menu from "./components/menu/menu";
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: styles },
-];
-
-export function Layout({ children }: { children: React.ReactNode }) {
+export default function App() {
   return (
-    <html lang="ja">
+    <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        />
+
+        {/* All `meta` exports on all routes will render here */}
         <Meta />
+
+        {/* All `link` exports on all routes will render here */}
         <Links />
       </head>
       <body>
         <Header />
         <Menu />
-        {children}
+        {/* Child routes render here */}
+        <Outlet />
+
+        {/* Manages scroll position for client-side transitions */}
+        {/* If you use a nonce-based content security policy for scripts, you must provide the `nonce` prop. Otherwise, omit the nonce prop as shown here. */}
         <ScrollRestoration />
-        <LiveReload />
+
+        {/* Script tags go here */}
+        {/* If you use a nonce-based content security policy for scripts, you must provide the `nonce` prop. Otherwise, omit the nonce prop as shown here. */}
         <Scripts />
+
+        {/* Sets up automatic reload when you change code */}
+        {/* and only does anything during development */}
+        {/* If you use a nonce-based content security policy for scripts, you must provide the `nonce` prop. Otherwise, omit the nonce prop as shown here. */}
+        <LiveReload />
       </body>
     </html>
   );
-}
-
-export default function App() {
-  return <Outlet />;
 }
