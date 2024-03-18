@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
 export default {
   content: [
     "./app/**/*.{js,jsx,ts,tsx}",
@@ -6,14 +7,24 @@ export default {
   ],
   theme: {
     colors: {
-      'main': "#01A275",
-      'sub1': "#FEF95D",
-      'sub2': "#FE5D8A",
-      'main-white': "#FDFDFD",
-      'main-black': "#333333",
+      primary: "#01A275",
+      secondary: "#FEF95D",
+      tertiary: "#FE5D8A",
+      black: colors.black,
+      white: colors.white,
+      gray: colors.slate,
+      green: colors.emerald,
+      purple: colors.violet,
+      yellow: colors.amber,
+      pink: colors.fuchsia,
+      red: colors.rose,
+      blue: colors.sky,
+    },
+    fontFamily: {
+      'shippori': ['Kiwi Maru', 'sans-serif'],
     },
     screens: {
-      'iphone': '375px',
+      'mobile': '375px',
       'pc': '1024px',
     },
     extend: {},

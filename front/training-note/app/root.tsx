@@ -27,7 +27,7 @@ export default function App() {
         {/* All `link` exports on all routes will render here */}
         <Links />
       </head>
-      <body>
+      <body className="w-screen h-screen font-shippori">
         <Header />
         <Menu />
         {/* Child routes render here */}

@@ -10,7 +10,6 @@ export default function Menu(){
       { name: 'トレーニング', to: 'training' },
       { name: 'はかる', to: 'measure'}
    ]
-   // const menu = ['カレンダー', 'トレーニング', 'はかる']
    return(
       <div className='w-full absolute bottom-0 pc:hidden'>
          <div className="flex justify-between items-center dark:bg-main-white rounded">
