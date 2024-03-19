@@ -11,6 +11,12 @@ import "./tailwind.css";
 import Header from "./components/header/header";
 import Menu from "./components/menu/menu";
 
+export const links = () =>{
+  return [
+    {rel: "manifest", href: '/manifest.json'},
+  ]
+}
+
 export default function App() {
   return (
     <html lang="en">

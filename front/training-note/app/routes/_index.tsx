@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import Install from "../components/index/install";
 
 
 export const meta: MetaFunction = () => {
@@ -11,6 +12,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div>
+      <Install />
     </div>
   );
 }
