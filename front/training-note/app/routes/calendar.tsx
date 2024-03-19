@@ -1,7 +1,9 @@
+import CalendarList from "../components/calendar/calendar";
+
 export default function Calendar() {
    return (
       <>
-         <h1>カレンダー</h1>
+         <CalendarList />
       </>
    );
 }

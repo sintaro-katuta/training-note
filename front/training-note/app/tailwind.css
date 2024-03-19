@@ -2,3 +2,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.fc-prev-button::after, .fc-next-button::before{
+	content: attr(title);
+}
