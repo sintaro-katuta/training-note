@@ -1,6 +1,7 @@
 import Level from "./level";
 import Play from "./play";
 import Title from "./title";
+import Channel from "./channel";
 
 type Props = {
    title: string;
@@ -19,6 +20,7 @@ export default function Training(props: Props) {
                <Play value={props.play} />
             </div>
             <Title title={props.title} />
+            <Channel name="筋トレチャンネル" icon={"/channel.jpg"} />
          </div>
       </div>
    );
