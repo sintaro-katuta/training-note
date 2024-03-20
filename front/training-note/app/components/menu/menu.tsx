@@ -16,7 +16,7 @@ export default function Menu(){
             {menu.map((item, i) => (
                <Link key={i} to={`/${item.to.toLowerCase()}`} className='flex flex-col justify-center items-center bg-base-2 text-white font-bold py-2 px-4 rounded'>
                   <img src={item.name + ".svg"} alt="" width={45} height={45} />
-                  <p className="text-xs">{item.name}</p>
+                  <p className="text-xs text-black">{item.name}</p>
                </Link>
             ))}
          </div>
