@@ -8,7 +8,7 @@ export default function Training() {
       thumbnail: "/サムネイル.png"
    }
    return (
-      <div className="w-full h-full p-5 flex flex-col gap-3">
+      <div className="w-full h-body p-5 flex flex-col gap-3">
          <TrainingList title={data.title} level={data.level} play={data.play} thumbnail={data.thumbnail} />
          <TrainingList title={data.title} level="ハード" play={data.play} thumbnail={data.thumbnail} />
          <TrainingList title={data.title} level="不可能" play={data.play} thumbnail={data.thumbnail} />

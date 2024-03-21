@@ -33,11 +33,13 @@ export default function App() {
         {/* All `link` exports on all routes will render here */}
         <Links />
       </head>
-      <body className="w-screen h-screen font-shippori">
+      <body className="w-screen h-screen font-shippori fixed">
         <Header />
-        <Menu />
+        
         {/* Child routes render here */}
         <Outlet />
+
+        <Menu />
 
         {/* Manages scroll position for client-side transitions */}
         {/* If you use a nonce-based content security policy for scripts, you must provide the `nonce` prop. Otherwise, omit the nonce prop as shown here. */}

@@ -11,7 +11,7 @@ export default function Menu(){
       { name: 'はかる', to: 'measure'}
    ]
    return(
-      <div className='w-full absolute bottom-0 pc:hidden'>
+      <div className='w-full pc:hidden'>
          <div className="flex justify-between items-center dark:bg-main-white rounded">
             {menu.map((item, i) => (
                <Link key={i} to={`/${item.to.toLowerCase()}`} className='flex flex-col justify-center items-center bg-base-2 text-white font-bold py-2 px-4 rounded'>

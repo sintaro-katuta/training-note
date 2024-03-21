@@ -5,6 +5,9 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    height:{
+      body: "calc(100vh - 5rem)",
+    },
     colors:{
       black: "#333",
       white: "#fdfdfd",

@@ -4,13 +4,13 @@ import jaLocale from '@fullcalendar/core/locales/ja'; // 追加
 
 export default function Calendar() {
    return (
-      <div className="h-full p-5">
+      <div className="w-full h-body p-5">
          <FullCalendar
             plugins={[dayGridPlugin]}
             initialView="dayGridMonth"
             locales={[jaLocale]}
             locale="ja"
-            height="auto"
+            height="100%"
             dayCellContent={
                function(arg){
                   return arg.date.getDate();
