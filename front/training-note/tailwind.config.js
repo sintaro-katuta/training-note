@@ -5,9 +5,6 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    height:{
-      body: "calc(100vh - 5rem)",
-    },
     colors:{
       black: "#333",
       white: "#fdfdfd",
@@ -24,7 +21,10 @@ export default {
         primary: "#01A275",
         secondary: "#FEF95D",
         tertiary: "#FE5D8A",
-      }
+      },
+      height:{
+        body: "calc(100vh - 5rem)",
+      },
     },
   },
   plugins: [],
