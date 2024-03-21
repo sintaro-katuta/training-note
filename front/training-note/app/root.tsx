@@ -42,15 +42,16 @@ export default function App() {
         {/* Manages scroll position for client-side transitions */}
         {/* If you use a nonce-based content security policy for scripts, you must provide the `nonce` prop. Otherwise, omit the nonce prop as shown here. */}
         <ScrollRestoration />
+        
+        {/* Sets up automatic reload when you change code */}
+        {/* and only does anything during development */}
+        {/* If you use a nonce-based content security policy for scripts, you must provide the `nonce` prop. Otherwise, omit the nonce prop as shown here. */}
+        <LiveReload />
 
         {/* Script tags go here */}
         {/* If you use a nonce-based content security policy for scripts, you must provide the `nonce` prop. Otherwise, omit the nonce prop as shown here. */}
         <Scripts />
 
-        {/* Sets up automatic reload when you change code */}
-        {/* and only does anything during development */}
-        {/* If you use a nonce-based content security policy for scripts, you must provide the `nonce` prop. Otherwise, omit the nonce prop as shown here. */}
-        <LiveReload />
       </body>
     </html>
   );
