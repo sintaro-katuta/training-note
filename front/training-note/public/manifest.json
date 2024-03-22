@@ -1,5 +1,5 @@
 {
-   "theme_color":"#8936FF",
+   "theme_color":"#01A275",
    "background_color":"#2EC6FE",
    "icons":[
       {
@@ -15,7 +15,7 @@
          "type":"image/png"
       }
    ],
-   "orientation":"any",
+   "orientation":"po",
    "display":"standalone",
    "dir":"auto",
    "lang":"ja",

@@ -27,6 +27,8 @@ export default function App() {
           content="width=device-width, initial-scale=1"
         />
 
+        <title>トレーニングノート</title>
+
         {/* All `meta` exports on all routes will render here */}
         <Meta />
 
