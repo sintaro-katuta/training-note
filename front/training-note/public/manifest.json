@@ -15,7 +15,7 @@
          "type":"image/png"
       }
    ],
-   "orientation":"po",
+   "orientation":"portrait-primary",
    "display":"standalone",
    "dir":"auto",
    "lang":"ja",
