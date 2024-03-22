@@ -2,6 +2,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+	touch-action: none;
+	-webkit-overflow-scrolling: none;
+	overflow: hidden;
+	/* Other browsers */
+	overscroll-behavior: none;
+}
+
 .fc-prev-button::after, .fc-next-button::before{
 	content: attr(title);
 }

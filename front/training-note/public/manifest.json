@@ -1,6 +1,13 @@
 {
    "theme_color":"#01A275",
    "background_color":"#2EC6FE",
+   "orientation":"portrait-primary",
+   "display":"standalone",
+   "lang":"ja",
+   "name":"トレーニングノート",
+   "short_name":"トレノート",
+   "start_url":"/",
+   "scope":"/",
    "icons":[
       {
          "purpose":"maskable",
@@ -14,13 +21,5 @@
          "src":"icon512_rounded.png",
          "type":"image/png"
       }
-   ],
-   "orientation":"portrait-primary",
-   "display":"standalone",
-   "dir":"auto",
-   "lang":"ja",
-   "name":"トレーニングノート",
-   "short_name":"トレノート",
-   "start_url":"/",
-   "scope":"/"
+   ]
 }

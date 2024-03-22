@@ -19,12 +19,12 @@ export const links = () =>{
 
 export default function App() {
   return (
-    <html lang="en">
+    <html lang="ja">
       <head>
         <meta charSet="utf-8" />
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1"
+          content="width=device-width, initial-scale=1 user-scalable=0"
         />
 
         <title>トレーニングノート</title>
@@ -35,7 +35,7 @@ export default function App() {
         {/* All `link` exports on all routes will render here */}
         <Links />
       </head>
-      <body className="w-screen h-screen font-shippori fixed">
+      <body className="w-screen h-screen font-shippori">
         <Header />
         
         {/* Child routes render here */}
