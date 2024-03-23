@@ -16,14 +16,18 @@
     "@fullcalendar/list": "^6.1.11",
     "@fullcalendar/react": "^6.1.11",
     "@fullcalendar/timegrid": "^6.1.11",
+    "@prisma/client": "^5.11.0",
     "@remix-run/node": "^2.8.1",
     "@remix-run/react": "^2.8.1",
     "@remix-run/serve": "^2.8.1",
     "autoprefixer": "latest",
     "isbot": "^4.1.0",
     "postcss": "latest",
+    "prisma": "^5.11.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "remix-auth": "^3.6.0",
+    "remix-auth-form": "^1.4.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.8.1",
