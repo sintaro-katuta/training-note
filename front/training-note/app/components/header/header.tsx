@@ -1,14 +1,19 @@
+import { Link } from "@remix-run/react";
+
 export default function Header() {
    return (
       <div className="w-full pc:block mobile:hidden bg-primary">
-         <header className="flex items-center justify-center p-4 text-white">
-            <a href="/" className="w-1/3 text-2xl font-bold">トレーニングノート</a>
-            <div className="w-1/3 flex justify-center gap-10">
-               <a href="/calendar">カレンダー</a>
-               <a href="/training">トレーニング</a>               
-               <a href="/measure">はかる</a>
+         <header className="flex items-center justify-between p-4 text-white">
+            <Link to={"/"} className="text-2xl font-bold">トレノート</Link>
+            <div className="flex justify-center gap-10">
+               <Link to={"/calendar"}>カレンダー</Link>
+               <Link to={"/training"}>トレーニング</Link>               
+               <Link to={"/measure"}>はかる</Link>
             </div>
-            <a href="/login" className="w-1/3 text-right">ログイン</a>
+            <div className="flex gap-2">
+               <Link to={"/login"} className="bg-secondary text-black rounded-full p-2">ログイン</Link>
+               <Link to={"/logout"} className="bg-tertiary text-black rounded-full p-2">ログアウト</Link>
+            </div>
          </header>
       </div>
    );

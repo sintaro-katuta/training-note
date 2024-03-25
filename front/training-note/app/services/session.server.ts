@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { createCookieSessionStorage } from "@remix-run/node";
 
 const sessionSecret: string | undefined = process.env.SESSION_SECRET;
@@ -15,3 +17,4 @@ export let sessionStorage = createCookieSessionStorage({
       maxAge: 60 * 60 * 24,
    },
 });
+/* eslint-enable */
