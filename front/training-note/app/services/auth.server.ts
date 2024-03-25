@@ -2,16 +2,14 @@ import { Authenticator } from "remix-auth";
 import { sessionStorage } from "./session.server";
 import { FormStrategy } from "remix-auth-form";
 import { login } from "./login.server";
-/* eslint-disable */
-export let authenticator = new Authenticator<number>(sessionStorage);
+
+export const authenticator = new Authenticator<string>(sessionStorage);
 
 authenticator.use(
    new FormStrategy(async ({ form }) => {
-      let email = form.get("email");
-      let password = form.get("password");
-      let userId = await login(String(email), String(password));
+      const email = form.get("email");
+      const userId = await login(String(email));
       return userId;
    }),
    "user-login"
 );
-/* eslint-enable */

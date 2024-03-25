@@ -9,7 +9,7 @@ export default function Measure() {
    const day = today.getDay();
    const weekDay = ["日", "月", "火", "水", "木", "金", "土"];
    return (
-      <div className="w-full h-body flex flex-col items-center justify-between">
+      <div className="w-full h-body flex flex-col items-center justify-between p-5">
          <p className="w-full h-1/6 text-4xl text-center">{month}月 {date}日 ({weekDay[day]})</p>
          <p className="w-full h-1/6 text-6xl text-center">{weight.toFixed(1)} kg</p>
          <div className="w-full h-1/5 border border-black rounded-full mt-1">

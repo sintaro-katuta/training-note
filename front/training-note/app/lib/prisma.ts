@@ -1,0 +1,9 @@
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient({
+   log: ['query', 'info', 'warn'],
+});
+
+export default prisma;
+
+export * from '@prisma/client';

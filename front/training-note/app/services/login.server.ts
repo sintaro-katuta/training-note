@@ -1,7 +1,14 @@
-/* eslint-disable */
+import prisma from "../lib/prisma"
 
-export async function login(email: string, password: string): Promise<number> {
+export async function login(email: string): Promise<string> {
    // DBからuserを取得する処理が入る
-   return await 1;
+   const user = await prisma.user.upsert({ 
+      where: { email: email },
+      update: { updatedAt: new Date() },
+      create: {
+         email: email,
+      }
+   })
+
+   return user.id
 }
-/* eslint-enable */
