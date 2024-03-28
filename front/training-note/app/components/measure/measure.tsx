@@ -1,8 +1,11 @@
 import { useState } from "react";
 
+type Props = {
+   weight: number;
+}
 
-export default function Measure() {
-   const [weight, setWeight] = useState(60.0);
+export default function Measure(props: Props) {
+   const [weight, setWeight] = useState(props.weight);
    const today = new Date();
    const month = today.getMonth() + 1;
    const date = today.getDate();
