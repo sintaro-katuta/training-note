@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: ./front/Dockerfile
     container_name: training-note-front
+    env_file:
+      - ./front/training-note/.env
     volumes:
       - ./front:/usr/src/app
     tty: true # コンテナを起動したままにする

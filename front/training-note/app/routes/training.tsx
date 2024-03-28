@@ -1,25 +1,47 @@
-import Training from "../components/training/training";
 import type { LoaderFunctionArgs } from "@remix-run/node";
+import Training from "../components/training/training";
+import { useLoaderData } from "@remix-run/react";
+import axios from "axios";
 import { authenticator } from "../services/auth.server";
 
+type ytData = {
+   title: string;
+   level: string;
+   url: string;
+   play: number;
+   thumbnail: string;
+
+}
+
 export async function loader({ request }: LoaderFunctionArgs) {
-   return await authenticator.isAuthenticated(request, {
+   await authenticator.isAuthenticated(request, {
       failureRedirect: "/login",
    });
+
+   const url = `https://www.googleapis.com/youtube/v3/search?type=video&part=snippet&q=筋トレ&maxResults=10&key=${process.env.YOUTUBE_API_KEY}`;
+
+   const response = await axios.get(url)
+      .then((res) => {
+         console.log("then", res.data.items)
+         return res.data.items
+      })
+      .catch((error) => {
+         console.log("error")
+         return error
+      })
+   return response
 }
 
 export default function TrainingRoute() {
-   const data = {
-      title: "【15分】バキバキの腹筋を作る鬼の15種目最強腹筋トレーニング！【超上級】",
-      level: "きつい",
-      play: 3,
-      thumbnail: "/サムネイル.png"
-   }
+   const ytData = useLoaderData();
+   console.log(ytData)
    return (
-      <div className="w-full h-body p-5 flex flex-col gap-3">
-         <Training title={data.title} level={data.level} play={data.play} thumbnail={data.thumbnail} />
-         <Training title={data.title} level="ハード" play={data.play} thumbnail={data.thumbnail} />
-         <Training title={data.title} level="不可能" play={data.play} thumbnail={data.thumbnail} />
+      <div className="w-full h-body p-5 flex flex-col gap-5 overflow-y-auto">
+         {ytData && ytData.map((item: ytData, index: number) => {
+            return(
+               <Training key={index} title={item.snippet.title} url={item.id.videoId} level="きつい" play={3} thumbnail={item.snippet.thumbnails.high.url} />
+            )
+         })}
       </div>
    );
 }
