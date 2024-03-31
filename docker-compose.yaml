@@ -13,3 +13,4 @@ services:
     command: sh -c "cd training-note && npm run dev"
     ports:
       - 3004:3004
+      - 5555:5555

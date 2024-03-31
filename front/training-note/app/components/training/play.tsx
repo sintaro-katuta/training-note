@@ -1,5 +1,5 @@
 type Props = {
-   value: number;
+   value?: number;
 }
 
 export default function Play(props: Props) {

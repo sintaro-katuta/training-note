@@ -15,7 +15,7 @@ export default function Menu(){
          <div className="flex justify-between items-center dark:bg-main-white rounded">
             {menu.map((item, i) => (
                <Link key={i} to={`/${item.to.toLowerCase()}`} className='flex flex-col justify-center items-center bg-base-2 text-white font-bold py-2 px-4 rounded'>
-                  <img src={item.name + ".svg"} alt="" width={45} height={45} />
+                  <img src={`/${item.name}.svg`} alt="" width={45} height={45} />
                   <p className="text-xs text-black">{item.name}</p>
                </Link>
             ))}

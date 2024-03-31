@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "vite build && vite build --ssr",
-    "dev": "vite dev --host",
+    "dev": "vite dev --host && bun run dev:css",
+    "dev:css": "tailwindcss -w -i ./app/tailwind.css -o ./app/tailwind.generated.css",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js",
     "typecheck": "tsc"
