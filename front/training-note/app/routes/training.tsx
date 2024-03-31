@@ -37,7 +37,7 @@ export default function TrainingRoute() {
             )
          })}
          <Link to={"add"}>
-            <img src="/add.svg" alt="" className="absolute bottom-10 right-10" width={80} height={80} />
+            <img src="/add.svg" alt="" className="absolute bottom-10 pc:right-10 mobile:right-5 mobile:bottom-20 pc:w-20 mobile:w-14" />
          </Link>
       </div>
    );
