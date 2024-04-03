@@ -48,21 +48,18 @@ export default function TrainingRoute() {
                <>
                   <div className="w-full pc:h-1/3 mobile:h-1/4 flex items-center justify-center border border-black cursor-pointer" key={index}>
                      <img src={item.thumbnail} alt="サムネイル" className=" object-contain h-full pc:w-1/4 mobile:w-1/3 mobile:p-3 pc:p-5" />
-                     <div className="w-2/3 h-full flex flex-col items-start justify-start gap-3 pc:gap-10 pc:pt-8 mobile:pt-2 pc:px-5 mobile:px-3">
+                     <div className="w-2/3 h-full flex flex-col items-start justify-start gap-10 pc:pt-8 mobile:pt-2 pc:px-5 mobile:px-3">
                         <div className="w-full flex items-center justify-between">
                            <Level level={item.level} />
                         </div>
                         <button className="pc:text-2xl mobile:text-sm text-blue-600 hover:underline" onClick={() => insertTraining(item.id)}>{item.title}</button>
-                        {/* <a href={`https://www.youtube.com/watch?v=${item.id}`} onClick={() => insertTraining(item.id)} className="pc:text-2xl mobile:text-sm text-blue-600 hover:underline">
-                              {item.title}
-                        </a> */}
                      </div>
                   </div>
                </>
             )
          })}
          <Link to={"add"}>
-            <img src="/add.svg" alt="" className="absolute bottom-10 pc:right-10 mobile:right-5 mobile:bottom-20 pc:w-20 mobile:w-14" />
+            <img src="/add.svg" alt="" className="absolute bottom-10 pc:right-10 mobile:right-5 mobile:bottom-28 pc:w-20 mobile:w-14" />
          </Link>
       </div>
    );

@@ -7,7 +7,7 @@ export default function Login() {
       <>
          <Form method="post" className="w-full h-body flex flex-col gap-5 p-5 items-center justify-center">
             <label htmlFor="email" className="text-xl">メール</label>
-            <input type="email" name="email" required className="w-full border rounded text-2xl" />
+            <input type="email" name="email" required className="w-1/3 h-10 border rounded text-2xl" />
             <button className="bg-primary w-fit text-xl rounded-full p-3 mt-10">ログイン</button>
          </Form>
       </>

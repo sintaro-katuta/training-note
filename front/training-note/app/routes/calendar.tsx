@@ -17,22 +17,26 @@ function getLevel(level: string) {
    }
 }
 
+function toDateString(date: Date): string {
+   const year = date.getFullYear().toString();
+   const month = (date.getMonth() + 1).toString().padStart(2, '0');
+   const day = date.getDate().toString().padStart(2, '0');
+   return `${year}-${month}-${day}`;
+} 
+
 export async function loader({ request }: LoaderFunctionArgs) {
    const user = await authenticator.isAuthenticated(request, {
       failureRedirect: "/login",
    });
-   return userCalendar(user)
-}
-
-export default function Calendar() {
-   const calendarData = useLoaderData<typeof loader>();
+   const calendarData = await userCalendar(user)
    const events = calendarData.flatMap((record) => {
+      console.log(record)
       const eventList = [];
       if (record.weight) {
          eventList.push({
             id: record.id,
             title: record.weight + "kg",
-            start: record.createdAt.split('T')[0],
+            start: toDateString(new Date(record.createdAt)),
             description: "体重",
             backgroundColor: "#0f83fd",
             borderColor: "#333333",
@@ -44,7 +48,7 @@ export default function Calendar() {
          eventList.push({
             id: record.training.id,
             title: record.training.level,
-            start: record.createdAt.split('T')[0],
+            start: toDateString(new Date(record.createdAt)),
             description: record.training.title,
             backgroundColor: getLevel(record.training.level),
             borderColor: "#333333",
@@ -53,7 +57,11 @@ export default function Calendar() {
       }
       return eventList;
    });
+   return events;
+}
 
+export default function Calendar() {
+   const events = useLoaderData<typeof loader>();
    return (
       <>
          <div className="w-full h-body p-5">
