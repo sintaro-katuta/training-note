@@ -1,7 +1,7 @@
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { authenticator } from "../services/auth.server";
 import { create } from "../services/training.server";
-import { useFetcher, useActionData, Form } from "@remix-run/react";
+import { useFetcher, useActionData, Form, redirect } from "@remix-run/react";
 import Level from "../components/training/level";
 import Title from "../components/training/title";
 import React, { useState } from "react";
@@ -51,7 +51,9 @@ export async function action({ request }: ActionFunctionArgs) {
       const thumbnail = formData.get("thumbnail");
       const play = formData.get("play");
 
-      return await create(String(id), String(title), String(level), String(thumbnail), Number(play));
+      await create(String(id), String(title), String(level), String(thumbnail), Number(play));
+
+      return redirect("/training");
    }
 }
 
