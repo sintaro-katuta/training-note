@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { LoaderFunctionArgs, ActionFunctionArgs } from "@remix-run/node";
-import { Form, useLoaderData } from "@remix-run/react";
+import { Form, redirect, useLoaderData } from "@remix-run/react";
 import { authenticator } from "../services/auth.server";
 import { getWeight, addOrUpdateCalendarEntry } from "../services/calendar.server";
 
@@ -19,7 +19,8 @@ export async function action({ request }: ActionFunctionArgs) {
     const formData = await request.formData();
     const weight = Number(formData.get("weight"))
     if (user && weight) {
-        return await addOrUpdateCalendarEntry(user, date, weight)
+        await addOrUpdateCalendarEntry(user, date, weight)
+        return redirect("/calendar")
     }
 }
 

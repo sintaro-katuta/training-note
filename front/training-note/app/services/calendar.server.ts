@@ -3,13 +3,16 @@ import prisma from "../lib/prisma";
 export async function getWeight(userId: string) {
    const calendar = await prisma.calendar.findFirst({
       where: {
-         userId: userId
+         weight: {
+            not: null,
+         },
+         userId: userId,
       },
       orderBy: {
-         createdAt: "desc"
-      }
-   })
-   if (!calendar?.weight) {
+         createdAt: 'desc',
+      },
+   });
+   if (!calendar) {
       return -1
    }else{
       return calendar?.weight

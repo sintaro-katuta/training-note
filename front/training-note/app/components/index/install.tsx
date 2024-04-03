@@ -30,13 +30,13 @@ export default function Install() {
    return (
       <div>
          {isInstallable ?
-            <button className='flex' onClick={() => onInstallClick()}>
+            <button className='flex bg-primary rounded-full p-1' onClick={() => onInstallClick()}>
                <p>インストール</p>
             </button>
          :
-            <div className='flex'>
+            <button className='flex bg-primary rounded-full p-1'>
                <p>インストール済み</p>
-            </div>
+            </button>
          }
       </div>
    );
