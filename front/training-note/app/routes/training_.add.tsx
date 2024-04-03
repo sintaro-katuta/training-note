@@ -1,11 +1,26 @@
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { authenticator } from "../services/auth.server";
 import { create } from "../services/training.server";
-import { useSubmit, useFetcher, useActionData, Form } from "@remix-run/react";
+import { useFetcher, useActionData, Form } from "@remix-run/react";
 import Level from "../components/training/level";
 import Title from "../components/training/title";
 import React, { useState } from "react";
 import axios from "axios";
+
+type item = {
+   thumbnail: string;
+   contentDetails: {
+      duration: string;
+   };
+   snippet: {
+      title: string;
+      thumbnails: {
+         high: {
+            url: string;
+         }
+      }
+   }
+}
 
 export async function action({ request }: ActionFunctionArgs) {
    await authenticator.isAuthenticated(request, {
@@ -36,14 +51,12 @@ export async function action({ request }: ActionFunctionArgs) {
       const thumbnail = formData.get("thumbnail");
       const play = formData.get("play");
 
-      console.log("id", id, "title", title, "level", level, "thumbnail", thumbnail, "play", play)
-
       return await create(String(id), String(title), String(level), String(thumbnail), Number(play));
    }
 }
 
 export default function TrainingAdd() {
-   const ytData: any = useActionData();
+   const ytData = useActionData<typeof action>();
    const fetcher = useFetcher();
 
    const [videoId, setVideoId] = useState("");
@@ -65,9 +78,9 @@ export default function TrainingAdd() {
 
    function parseTime(timeString: string) {
       const timeParts = timeString.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-      const hours = timeParts[1] ? parseInt(timeParts[1], 10) : 0;
-      const minutes = timeParts[2] ? parseInt(timeParts[2], 10) : 0;
-      const seconds = timeParts[3] ? parseInt(timeParts[3], 10) : 0;
+      const hours = timeParts && timeParts[1] ? parseInt(timeParts[1], 10) : 0;
+      const minutes = timeParts && timeParts[2] ? parseInt(timeParts[2], 10) : 0;
+      const seconds = timeParts && timeParts[3] ? parseInt(timeParts[3], 10) : 0;
       return { hours, minutes, seconds };
    }
 
@@ -93,8 +106,6 @@ export default function TrainingAdd() {
       const thumbnail = ytData[0].snippet.thumbnails.high.url;
       const play = 0;
 
-      console.log(id)
-
       const formData = new FormData();
 
       formData.append("id", id);
@@ -116,11 +127,11 @@ export default function TrainingAdd() {
             <button className="w-fit text-xl">検索</button>
          </Form>
          <div className="w-full h-full flex items-center justify-center">
-         {ytData && ytData.map((item: any, index: number) => {
+         {ytData && ytData.map((item: item, index: number) => {
             return(
                <>
                   <div className="w-full pc:h-1/2 mobile:h-1/4 flex items-center justify-center border border-black" key={index}>
-                  <img src={item.thumbnail} alt="サムネイル" className=" object-contain h-full pc:w-1/4 mobile:w-1/3 mobile:p-3 pc:p-5" />
+                  <img src={item.snippet.thumbnails.high.url} alt="サムネイル" className=" object-contain h-full pc:w-1/4 mobile:w-1/3 mobile:p-3 pc:p-5" />
                      <div className="w-2/3 h-full flex flex-col items-start justify-start gap-3 pc:gap-10 pc:pt-8 mobile:pt-2 pc:px-5 mobile:px-3">
                         <div className="w-full flex items-center justify-between">
                            <Level level={getLevel(item.contentDetails.duration)} />

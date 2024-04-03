@@ -9,11 +9,11 @@ datasource db {
 }
 
 model User {
+  id        String       @id @default(cuid())
   email     String       @unique
   createdAt DateTime     @default(now())
   updatedAt DateTime     @updatedAt
-  id        String       @id @default(cuid())
-  weight    UserWeight[]
+  calendars Calendar[]
 }
 
 model Training {
@@ -26,21 +26,12 @@ model Training {
   calendars Calendar[]
 }
 
-model UserWeight {
-  id        String     @id @default(cuid())
-  weight    Float
-  createdAt DateTime   @default(now())
-  userId    String
-  calendars Calendar[]
-  user      User       @relation(fields: [userId], references: [id])
-}
-
 model Calendar {
-  id        String     @id @default(cuid())
-  traingId  String
-  weightId  String
-  date      DateTime
-  createdAt DateTime   @default(now())
-  training  Training   @relation(fields: [traingId], references: [id])
-  weight    UserWeight @relation(fields: [weightId], references: [id])
+  id        String      @id @default(cuid())
+  traingId  String?
+  weight    Float?
+  userId    String
+  createdAt DateTime    @default(now())
+  training  Training?   @relation(fields: [traingId], references: [id])
+  user      User        @relation(fields: [userId], references: [id])
 }

@@ -2,22 +2,24 @@ import React, { useState } from "react";
 import type { LoaderFunctionArgs, ActionFunctionArgs } from "@remix-run/node";
 import { Form, useLoaderData } from "@remix-run/react";
 import { authenticator } from "../services/auth.server";
-import { create, get } from "../services/measure";
+import { getWeight, addOrUpdateCalendarEntry } from "../services/calendar.server";
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const user =  await authenticator.isAuthenticated(request, {
         failureRedirect: "/login",
     });
-    const weight = await get(user)
+    const weight = await getWeight(user)
     return weight
 }
 
 export async function action({ request }: ActionFunctionArgs) {
     const user = await authenticator.isAuthenticated(request)
+    const date = new Date(new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" }));
+    console.log(date)
     const formData = await request.formData();
     const weight = Number(formData.get("weight"))
     if (user && weight) {
-        return await create(weight, user)
+        return await addOrUpdateCalendarEntry(user, date, weight)
     }
 }
 
@@ -61,13 +63,13 @@ export default function Measure() {
     return (
         <div className="w-full h-body flex flex-col items-center justify-between p-5">
             <p className="w-full h-fit text-4xl text-center">{month}月 {date}日 ({weekDay[day]})</p>
+            <p>{}</p>
             <div className="w-full h-full flex flex-col py-5 items-center justify-between">
             {loadWeight == -1
                 ?
                 <>
                     <p className="w-full h-1/6 text-4xl text-center">初めての計測ですね！</p>
-                    <p className="w-full h-1/6 text-4xl text-center">体重を入力してください</p>
-                    <p>{intWeight}.{decWeight}</p>
+                    <p className="w-full h-1/6 text-4xl text-center">体重を入力してください</p>                    
                     <div className="flex gap-3 items-center justify-center">
                         <input type="text" className="w-36 h-28 border text-5xl text-center" placeholder="50" onChange={(e) => weigthValidation(e, "int")} />
                         <p className="text-5xl">.</p>
@@ -78,18 +80,18 @@ export default function Measure() {
                 :
                 <>
                     <p className="w-full h-fit text-6xl text-center">{weight.toFixed(1)} kg</p>
-                    <div className="w-full h-1/5 border border-black shadow-lg rounded-full mt-1">
-                        <button className="w-1/4 h-full" onClick={() => setWeight(weight - 1)}>-1</button>
-                        <button className="w-1/4 h-full" onClick={() => setWeight(weight - 0.1)}>-0.1</button>
-                        <button className="w-1/4 h-full" onClick={() => setWeight(weight + 0.1)}>+0.1</button>
-                        <button className="w-1/4 h-full" onClick={() => setWeight(weight + 1)}>+1</button>
+                    <div className="w-full flex items-center justify-center gap-3">
+                        <button className="w-20 h-20 shadow-xl rounded-full" onClick={() => setWeight(weight - 1)}>-1</button>
+                        <button className="w-20 h-20 shadow-xl rounded-full" onClick={() => setWeight(weight - 0.1)}>-0.1</button>
+                        <button className="w-20 h-20 shadow-xl rounded-full" onClick={() => setWeight(weight + 0.1)}>+0.1</button>
+                        <button className="w-20 h-20 shadow-xl rounded-full" onClick={() => setWeight(weight + 1)}>+1</button>
                     </div>
                 </>
             }
             </div>
             <Form method="post" className="w-full h-full flex items-center justify-center">
                 <input type="hidden" name="weight" className="w-1/3 text-6xl text-center" value={weight.toFixed(1)} />
-                <input type="submit" className="w-32 h-32 bg-gradient-to-b from-primary to-[#37cba1] rounded-full text-white text-2xl font-bold" value="決定" onClick={() => onSubmit()} />
+                <input type="submit" className="w-32 h-32 bg-gradient-to-b from-primary to-[#37cba1] rounded-full text-white text-2xl font-bold shadow-xl" value="決定" onClick={() => onSubmit()} />
             </Form>
         </div>
     );
