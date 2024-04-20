@@ -3,16 +3,7 @@ import type { ActionFunctionArgs, } from "@remix-run/node"
 import { authenticator } from "../services/auth.server"
 
 export async function action({ request }: ActionFunctionArgs) {
-   const emailPattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/;
-   const form = await request.formData()
-   const email = form.get("email")
-   if (email === null) {
-      return "メールアドレスが入力されていません"
-   }
-   if (!emailPattern.test(String(email))) {
-      return "メールアドレスの形式が正しくありません"
-   }
-   await authenticator.authenticate("user-login", request,{
+   return await authenticator.authenticate("user-login", request, {
       successRedirect: "/",
       failureRedirect: "/login",
    })

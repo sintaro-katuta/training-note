@@ -138,7 +138,7 @@ export default function TrainingAdd() {
                         <div className="w-full flex items-center justify-between">
                            <Level level={getLevel(item.contentDetails.duration)} />
                            <button onClick={() => insertTraining()}>
-                           <img src="/add.svg" alt="" className="cursor-pointer" width={40} height={40} />
+                              <img src="/add.svg" alt="" className="cursor-pointer" width={40} height={40} />
                            </button>
                         </div>
                         <Title title={item.snippet.title} url={videoId} />
