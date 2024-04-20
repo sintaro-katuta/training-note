@@ -13,7 +13,7 @@ export default {
       'shippori': ['Kiwi Maru', 'sans-serif'],
     },
     screens: {
-      'mobile': '375px',
+      'mobile': '359px',
       'pc': '1024px',
     },
     extend: {

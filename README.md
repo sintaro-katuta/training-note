@@ -18,7 +18,7 @@
 - Tailwind
 
 ### Back
-- Vercel Postgres
+- RDB
 
 ### infra
 - Vercel

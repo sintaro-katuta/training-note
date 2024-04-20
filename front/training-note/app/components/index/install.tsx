@@ -28,16 +28,16 @@ export default function Install() {
       }
    };
    return (
-      <div>
+      <>
          {isInstallable ?
-            <button className='flex bg-primary rounded-full p-1' onClick={() => onInstallClick()}>
-               <p>インストール</p>
+            <button className='flex bg-primary rounded-full p-3' onClick={() => onInstallClick()}>
+               <p className="pc:text-xl mobile:text-base text-black">インストール</p>
             </button>
          :
             <button className='flex bg-primary rounded-full p-1'>
-               <p>インストール済み</p>
+               <p className="pc:text-xl mobile:text-base text-black">インストール済み</p>
             </button>
          }
-      </div>
+      </>
    );
 }

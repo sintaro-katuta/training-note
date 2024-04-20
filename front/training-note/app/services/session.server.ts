@@ -14,7 +14,7 @@ export let sessionStorage = createCookieSessionStorage({
       httpOnly: true,
       secrets: [sessionSecret],
       secure: process.env.NODE_ENV === "production",
-      maxAge: 60 * 60 * 24,
+      maxAge: 60 * 60 * 24 * 30,
    },
 });
 /* eslint-enable */

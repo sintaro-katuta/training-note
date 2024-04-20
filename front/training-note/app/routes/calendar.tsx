@@ -30,7 +30,6 @@ export async function loader({ request }: LoaderFunctionArgs) {
    });
    const calendarData = await userCalendar(user)
    const events = calendarData.flatMap((record) => {
-      console.log(record)
       const eventList = [];
       if (record.weight) {
          eventList.push({
@@ -43,7 +42,6 @@ export async function loader({ request }: LoaderFunctionArgs) {
             editable: false,
          });
       }
-      console.log(record.training)
       if (record.training) {
          eventList.push({
             id: record.training.id,
