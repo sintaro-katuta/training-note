@@ -90,11 +90,11 @@ export default function TrainingAdd() {
       const { hours, minutes, seconds } = parseTime(time);
       console.log("time", hours, minutes, seconds)
       if(minutes < 5) {
-         return "きつい"
+         return "イージー"
       } else if(minutes < 10) {
-         return "ハード"
+         return "ノーマル"
       } else {
-         return "不可能"
+         return "ハード"
       }
    }
 
