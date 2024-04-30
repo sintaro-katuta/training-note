@@ -8,11 +8,11 @@ import { userCalendar } from "../services/calendar.server";
 
 function getLevel(level: string) {
    switch (level) {
-      case "きつい":
+      case "イージー":
          return "#01A275";
-      case "ハード":
+      case "ノーマル":
          return "#FEF95D";
-      case "不可能":
+      case "ハード":
          return "#FE5D8A";
    }
 }
