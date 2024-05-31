@@ -49,9 +49,8 @@ export async function action({ request }: ActionFunctionArgs) {
       const title = formData.get("title");
       const level = formData.get("level");
       const thumbnail = formData.get("thumbnail");
-      const play = formData.get("play");
 
-      await create(String(id), String(title), String(level), String(thumbnail), Number(play));
+      await create(String(id), String(title), String(level), String(thumbnail));
 
       return redirect("/training");
    }

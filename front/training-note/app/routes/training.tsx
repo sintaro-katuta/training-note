@@ -24,9 +24,9 @@ export async function action({ request }: ActionFunctionArgs) {
    const user = await authenticator.isAuthenticated(request);
    const date = new Date(new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" }));
    const formData = await request.formData();
-   const traingId = formData.get("traingId");
+   const traingId = String(formData.get("traingId"));
    if (user && traingId ){
-      addOrUpdateCalendarEntry(user, date, undefined, traingId as string);
+      await addOrUpdateCalendarEntry(user, date, undefined, traingId);
    }
    return redirect(`https://www.youtube.com/watch?v=${traingId}`)
 }
@@ -35,8 +35,6 @@ export default function TrainingRoute() {
    const ytData = useLoaderData<typeof loader>();
    const fetcher = useFetcher();
    const [modal, setModal] = useState<boolean>(false);
-
-   console.log("modal", modal)
 
    const insertTraining = async (traingId: string) => {
       const formData = new FormData();

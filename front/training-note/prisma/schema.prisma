@@ -20,7 +20,6 @@ model Training {
   id        String     @id
   createdAt DateTime   @default(now())
   level     String
-  play      Int
   thumbnail String
   title     String
   calendars Calendar[]
